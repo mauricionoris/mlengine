@@ -1,0 +1,27 @@
+[package]
+name = "mlengine"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+# pyo3 = "0.19.2"
+
+
+[dependencies]
+rusty-machine = "0.5.4"
+
+arrow2 = {version = "0.17.0", features = ["io_ipc", "io_parquet"]}
+
+serde = { version = "1.0", features = ["derive"] }
+serde_arrow = {version = "0.7.1", features = ["arrow2-0-17"] }
+serde_json = "1.0.107"
+
+rand = "0.8.5"
+
+
+
+[profile.release]
+codegen-units = 1
+lto = "fat"
+debug = true
